@@ -7,11 +7,62 @@ body {
   
 }
 
+.header-row {
+	text-align: center;
+}
+
+.header {
+	font-size: 32pt;
+}
+
 .col-centered {
 	text-align: center;
 	/*float: none;
 	margin: 0 auto;
 	display: center;*/
+}
+
+.time-selected {
+	/*amount of time selected*/
+	font-size: 14pt;
+}
+
+/*time set buttons*/
+.time-btn{
+	background-color: #3fafb3;
+	margin: 5px;
+}
+
+.time-btn:hover {
+	background-color: #3fafb3;
+}
+
+.time-btn:active {
+	background-color: #3fafb3;
+}
+
+/*control buttons*/
+.ctrl-btn {
+	background-color: #76a1d6;
+	margin: 5px;
+}
+
+.ctrl-btn:hover {
+	background-color: #76a1d6;
+}
+
+.ctrl-btn:active {
+	background-color: #76a1d6;
+}
+
+#start {
+	/*start button*/
+	min-width: 100px;
+}
+
+#pause {
+	/*pause button*/
+	min-width: 100px;
 }
 
 #display-container {
@@ -30,15 +81,14 @@ body {
 	font-size: 20pt;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 180px;        
+	line-height: 100px;        
 }
 #display {
 	font-size: 20pt;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 140px;
+	line-height: px;
 }
-
 
 .circleBase {
     border-radius: 50%;
@@ -50,13 +100,30 @@ body {
     width: 300px;
     height: 300px;
     border: 5px solid;
-}
-
-.session-border {
 	border-color: #76a1d6;
 }
 
-.break_border {
-	border-color: #c076d6
+
+/*links*/
+a {
+	color: #76a1d6;
+	text-decoration: none;
+	border-bottom: 2px solid #76a1d6;
+}
+
+a:link {
+    text-decoration: none;
+}
+
+a:visited {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a:active {
+    text-decoration: none;
 }
 

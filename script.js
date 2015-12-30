@@ -10,12 +10,12 @@ function clock () {
 	this.start_cancel = function() {
 		//pre: none
 		//post: either starts or pauses countdown
-			//depending on the state of this.countdown
+			//depending on the state of this.intervalID
 
-		if (this.countdown) {
-			//cancel
+		if (this.timer) {
+			// if the this.timer is not null 
+			// we are either counting down or paused
 			this.cancel();
-			this.timer_setup();
 		} else {
 			//start
 			this.timer_setup();
@@ -33,7 +33,7 @@ function clock () {
 			//load the timer if its null already.
 			if (this.mode == "Session") {
 				this.timer = this.work_time * 60
-			} else if (this.mode == "break") {
+			} else if (this.mode == "Break") {
 				this.timer = this.break_time * 60
 			}
 		}
@@ -44,7 +44,10 @@ function clock () {
 	this.start_timer = function() {
 		//pre: timer display has been set up
 		//post: sets the timer to begin countdown
+
+		//button options in this state
 		$("#start").text("cancel")
+		$("#pause").text("pause")
 		this.countdown = true
 		this.intervalId = setInterval(this.tick.bind(this), 1000)
 		this.enable_pause();
@@ -77,19 +80,33 @@ function clock () {
 			//(work -> break) and visa versa.
 
 		//kill the timer
-		clearInterval(this.intervalId)
+		clearInterval(this.intervalId);
+		this.intervalId = null;
 
 		//restore state
 		this.countdown = false;
 		this.timer = null;
 		//toggle modes
 		if (this.mode == "Session"){
-			this.mode = "break";
+			this.mode = "Break";
+			$("#video").show()
 		} else {
 			this.mode = "Session";
+			$("#video").hide()
 		};
+
+		//play sound effect.
+		this.play_sound();
 		this.start_cancel();
 	},
+
+	this.play_sound = function() {
+		//pre: none
+		//post: plays sound effect to single the end 
+		//of a session
+		var au = new Audio("http://soundbible.com/grab.php?id=1954&type=mp3");
+		au.play();
+	}
 
 	this.update_display = function() {
 		//pre: none
@@ -119,7 +136,7 @@ function clock () {
 
 			return minutes + ":" + seconds;
 		} else {
-			return null
+			return ""
 		}
 	}
 
@@ -131,13 +148,15 @@ function clock () {
 		//and clear the display
 		$("#start").text("start");
 		clearInterval(this.intervalId);
+		this.intervalId = null;
+		$("#display").text("")
+
 		this.disable_pause();
 
-		if (this.countdown === true) {
-			this.countdown = false;
-			this.timer = null;
-			this.mode = "Session";
-		};
+		this.countdown = false;
+		this.timer = null;
+		this.mode = "Session";
+
 	};
 
 	this.pause_resume = function () {
@@ -157,14 +176,17 @@ function clock () {
 		
 		$("#pause").text("resume");
 		clearInterval(this.intervalId);
+		this.intervalId = null;
 		this.enable_pause();
 
 		if (this.countdown == true) {
 			this.countdown = false;
 		};
+
 	};
 
 	this.resume = function() {
+		//resumes countdown
 		$("#pause").text("pause");
 		this.start_timer();
 	}
@@ -243,6 +265,9 @@ $(document).ready(function() {
 	//start and stop buttons
 	$("#start").click(pom.start_cancel.bind(pom))
 	$("#pause").click(pom.pause_resume.bind(pom))
+
+	//hide video link on load
+	$("#video").hide()
 
 });
 

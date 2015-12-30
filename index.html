@@ -1,8 +1,15 @@
 <!-- 
+Catadoro timer: a pomodoro timer, but cats!
+
+This is a pomodoro timer implemented in Javascript. Set the
+amount of time you would like to work. The orange kitty will tell you when its time to take a break and when its
+time to get back to work. He will even suggest a nice distraction when its break time.
 
 AKNOWLEDGEMNETS:
-	help with the key word this .bind() 
+	help with the key word this and .bind() 
 	http://javascriptissexy.com/understand-javascripts-this-with-clarity-and-master-it/
+
+	Cat meow sound effect: http://soundbible.com/grab.php?id=1954&type=mp3
  -->
 
 <html>
@@ -20,27 +27,33 @@ AKNOWLEDGEMNETS:
 	<body>
 
 		<!-- time entry for work and break -->
-		<div class="row">
-			Catodoro timer
+		<div class="row header-row">
+			<span class="header">Catodoro timer</span>
 		</div>
 		<div class="row row-centered" id="controls">
 			<div class="col-md-6 col-centered">
 				Session Time</br>
-				<button id="work-add">+</button> 
-				<span id="work-time"> </span>
-				<button id="work-sub">-</button>
+				<button id="work-add" class="btn time-btn">+</button> 
+				<span id="work-time" class="time-selected"> </span>
+				<button id="work-sub" class="btn time-btn">-</button></br>
+				<div id="start" class="btn ctrl-btn">
+				start
+				</div>
 			</div>
  
 			<div class="col-md-6 col-centered">
 				Break Time</br>
-				<button id="break-add">+</button> 
-				<span id="break-time"> </span>
-				<button id="break-sub">-</button>
+				<button id="break-add" class="btn btn btn-default time-btn">+</button> 
+				<span id="break-time" class="time-selected"> </span>
+				<button id="break-sub" class="btn time-btn">-</button></br>
+				<div id="pause" class="btn ctrl-btn disabled">
+				pause
+				</div>
 			</div>
 		</div>
 
 	<div class="row row-centered">		
-		<div class="col-md-8 col-md-offset-2 ">		
+		<div class="col-md-8 col-md-offset-2 col-centered ">		
 			<div id="display-container" class="circleBase circle session-border">		
 				<div id="mode" class="display-content">
 				<!-- display the state of the timer (session or work) -->
@@ -50,19 +63,12 @@ AKNOWLEDGEMNETS:
 				<!-- display for the time -->
 				</div>
 			</div>
-
-			</br>
 			
-			<div id="start" class="btn btn-info">
-				start
-				<!-- start button -->
+			<div id="video">
+				<!-- link to video -->
+				Time for a break! How about a <a target="_blank" href="https://www.youtube.com/watch?v=tntOCGkgt98"> cat video? </a> </br>
 			</div>
-			</br>
-			<div id="pause" class="btn btn-danger disabled">
-				pause
-				<!-- pause button -->
-			</div>
-			</br>
+
 
 		</div>
 	</div>
