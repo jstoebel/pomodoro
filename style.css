@@ -20,7 +20,7 @@ body {
 	margin: 0 auto;
 	display: center;
 	background: url(http://kittentoob.com/wp-content/uploads/sites/4/2014/10/orange-cat.jpg) no-repeat;
-    background-size: 130%;
+    background-size: 140%;
     background-repeat: no-repeat;
     background-position: 50%;
 
@@ -36,7 +36,7 @@ body {
 	font-size: 20pt;
 	text-align: center;
 	vertical-align: middle;
-	line-height: 300px;
+	line-height: 140px;
 }
 
 
@@ -47,8 +47,16 @@ body {
 }
 
 .circle {
-    width: 100%;
-    height: 100%;
-    border: 3px solid red;
+    width: 300px;
+    height: 300px;
+    border: 5px solid;
+}
+
+.session-border {
+	border-color: #76a1d6;
+}
+
+.break_border {
+	border-color: #c076d6
 }
 

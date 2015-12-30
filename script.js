@@ -14,13 +14,13 @@ function clock () {
 
 		if (this.countdown) {
 			//cancel
-			this.cancel()
-			this.timer_setup()
+			this.cancel();
+			this.timer_setup();
 		} else {
 			//start
-			this.timer_setup()
-			this.start_timer()
-		}
+			this.timer_setup();
+			this.start_timer();
+		};
 	}
 
 	this.timer_setup = function () {
@@ -29,7 +29,7 @@ function clock () {
 		//post: timer is set up and recursive function 
 		//is boostrapped
 
-		if (self.timer == null) {
+		if (this.timer == null) {
 			//load the timer if its null already.
 			if (this.mode == "Session") {
 				this.timer = this.work_time * 60
@@ -47,6 +47,7 @@ function clock () {
 		$("#start").text("cancel")
 		this.countdown = true
 		this.intervalId = setInterval(this.tick.bind(this), 1000)
+		this.enable_pause();
 	},
 
 	this.tick = function() {
@@ -130,12 +131,13 @@ function clock () {
 		//and clear the display
 		$("#start").text("start");
 		clearInterval(this.intervalId);
+		this.disable_pause();
 
-		if (self.countdown == true) {
-			self.countdown = false;
-			self.timer = null
-			this.mode = "Session"
-		}
+		if (this.countdown === true) {
+			this.countdown = false;
+			this.timer = null;
+			this.mode = "Session";
+		};
 	};
 
 	this.pause_resume = function () {
@@ -144,9 +146,9 @@ function clock () {
 
 		if (this.countdown == true) {
 			this.pause();
-		} else {
+		} else if (this.timer != null) {
 			this.resume();
-		}
+		};
 	}
 
 	this.pause = function() {
@@ -155,6 +157,7 @@ function clock () {
 		
 		$("#pause").text("resume");
 		clearInterval(this.intervalId);
+		this.enable_pause();
 
 		if (this.countdown == true) {
 			this.countdown = false;
@@ -206,6 +209,17 @@ function clock () {
 		$("#work-time").text(this.work_time)
 		$("#break-time").text(this.break_time)
 	};
+
+	this.enable_pause = function() {
+		//pre: none
+		//post: the pause/resume button is enabled
+		$("#pause").addClass("enabled").removeClass("disabled");
+	}
+
+	this.disable_pause = function() {
+
+		$("#pause").addClass("disabled").removeClass("enabled");
+	}
 
 };
 
