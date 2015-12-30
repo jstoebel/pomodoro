@@ -1,8 +1,54 @@
 body {
 	width: 50%;
 	margin: auto;
+	font-family: 'Open Sans', sans-serif;
+	background-color: #EEEEEE;
+	color: black;
+  
 }
 
 .col-centered {
 	text-align: center;
+	/*float: none;
+	margin: 0 auto;
+	display: center;*/
 }
+
+#display-container {
+	text-align: center;
+	float: none;
+	margin: 0 auto;
+	display: center;
+	background: url(http://kittentoob.com/wp-content/uploads/sites/4/2014/10/orange-cat.jpg) no-repeat;
+    background-size: 130%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+
+}
+
+#mode{
+	font-size: 20pt;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 180px;        
+}
+#display {
+	font-size: 20pt;
+	text-align: center;
+	vertical-align: middle;
+	line-height: 300px;
+}
+
+
+.circleBase {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+	margin: auto;
+}
+
+.circle {
+    width: 100%;
+    height: 100%;
+    border: 3px solid red;
+}
+
