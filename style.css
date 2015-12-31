@@ -65,7 +65,7 @@ html body {
 	min-width: 100px;
 }
 
-#display-container {
+#img-container {
 	text-align: center;
 	float: none;
 	margin: 0 auto;
@@ -77,16 +77,18 @@ html body {
 
 }
 
-#mode{
-	font-size: 20pt;
+#display-container {
+	font-size: 40pt;
 	text-align: center;
 	vertical-align: middle;
+}
+
+#mode{
+
 	line-height: 100px;        
 }
 #display {
-	font-size: 20pt;
-	text-align: center;
-	vertical-align: middle;
+
 	line-height: px;
 }
 
